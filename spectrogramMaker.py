@@ -16,15 +16,15 @@ def makeSpectrogram(label):
     wav_files = glob.glob(os.path.join('music_dataset/'+label+'/*.wav'), recursive=True)
     i=0
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/"+label+"/train")
+        os.makedirs("music_dataset_spectro_3_instrument/train/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/"+label+"/test")
+        os.makedirs("music_dataset_spectro_3_instrument/test/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/"+label+"/valid")
+        os.makedirs("music_dataset_spectro_3_instrument/valid/"+label)
     except:
         print("folder is already made")        
 
@@ -43,15 +43,15 @@ def makeSpectrogram(label):
 
         if i < int(len(wav_files)*0.80):
 
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/"+label+"/train", f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/train/"+label, f"{i}_spect.png"))
         
         elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90):
             
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/"+label+"/test", f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/test/"+label, f"{i}_spect.png"))
         
         else:
             
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/"+label+"/valid", f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/valid/"+label, f"{i}_spect.png"))
         
         plt.close()
         i=i+1
