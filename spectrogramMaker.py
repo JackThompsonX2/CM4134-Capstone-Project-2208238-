@@ -57,7 +57,11 @@ def makeSpectrogram(label):
         i=i+1
         gc.collect()
 
+
 #i would do this in a loop for label in labels but it seems github can commit that many files so i'll do it this way
+
+"""""
+
 makeSpectrogram("Accordion")
 print("done")
 makeSpectrogram("Acoustic_Guitar")
@@ -78,5 +82,29 @@ makeSpectrogram("Drum_set")
 print("done")
 makeSpectrogram("Electric_Guitar")
 print("done")
+"""""
 
+"""""
+makeSpectrogram("Floor_Tom")
+print("done")
+makeSpectrogram("flute")
+print("done")
+makeSpectrogram("Harmonica")
+print("done")
+makeSpectrogram("Hi_Hats")
+print("done")
+makeSpectrogram("Horn")
+print("done")
+makeSpectrogram("Keyboard")
+print("done")
+makeSpectrogram("Mandolin")
+print("done")
+makeSpectrogram("Organ")
+print("done")
+makeSpectrogram("Piano")
+print("done")
+"""""
+
+makeSpectrogram("Harmonium")
+print("done")
 
