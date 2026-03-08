@@ -16,15 +16,15 @@ def makeSpectrogram(label):
     wav_files = glob.glob(os.path.join('music_dataset/'+label+'/*.wav'), recursive=True)
     i=0
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/train/"+label)
+        os.makedirs("music_dataset_spectro_full/train/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/test/"+label)
+        os.makedirs("music_dataset_spectro_full/test/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_3_instrument/valid/"+label)
+        os.makedirs("music_dataset_spectro_full/valid/"+label)
     except:
         print("folder is already made")        
 
@@ -43,25 +43,40 @@ def makeSpectrogram(label):
 
         if i < int(len(wav_files)*0.80):
 
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/train/"+label, f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_full/train/"+label, f"{i}_spect.png"))
         
         elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90):
             
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/test/"+label, f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_full/test/"+label, f"{i}_spect.png"))
         
         else:
             
-            plt.savefig(os.path.join("music_dataset_spectro_3_instrument/valid/"+label, f"{i}_spect.png"))
+            plt.savefig(os.path.join("music_dataset_spectro_full/valid/"+label, f"{i}_spect.png"))
         
         plt.close()
         i=i+1
         gc.collect()
 
-
-
+#i would do this in a loop for label in labels but it seems github can commit that many files so i'll do it this way
+makeSpectrogram("Accordion")
+print("done")
 makeSpectrogram("Acoustic_Guitar")
+print("done")
+makeSpectrogram("Banjo")
 print("done")
 makeSpectrogram("Bass_Guitar")
 print("done")
+makeSpectrogram("Clarinet")
+print("done")
+makeSpectrogram("cowbell")
+print("done")
+makeSpectrogram("Cymbals")
+print("done")
+makeSpectrogram("Dobro")
+print("done")
 makeSpectrogram("Drum_set")
 print("done")
+makeSpectrogram("Electric_Guitar")
+print("done")
+
+
