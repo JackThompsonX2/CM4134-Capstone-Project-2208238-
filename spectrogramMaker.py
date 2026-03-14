@@ -16,15 +16,15 @@ def makeSpectrogram(label):
     wav_files = glob.glob(os.path.join('music_dataset/'+label+'/*.wav'), recursive=True)
     i=0
     try:
-        os.makedirs("music_dataset_spectro_full/train/"+label)
+        os.makedirs("music_seperation_dataset/train/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_full/test/"+label)
+        os.makedirs("music_seperation_dataset/test/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_dataset_spectro_full/valid/"+label)
+        os.makedirs("music_seperation_dataset/valid/"+label)
     except:
         print("folder is already made")        
 
@@ -37,21 +37,18 @@ def makeSpectrogram(label):
         log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max)
 
         plt.figure(figsize=(10, 4))
-        librosa.display.specshow(log_mel_spec, sr=sr, x_axis='time', y_axis='mel', cmap='magma')
-        plt.title('Mel-Spectrogram')
-        plt.tight_layout()
 
         if i < int(len(wav_files)*0.80):
 
-            plt.savefig(os.path.join("music_dataset_spectro_full/train/"+label, f"{i}_spect.png"))
+            plt.imsave(os.path.join("music_seperation_dataset/train/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90):
             
-            plt.savefig(os.path.join("music_dataset_spectro_full/test/"+label, f"{i}_spect.png"))
+            plt.imsave(os.path.join("music_seperation_dataset/test/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         else:
             
-            plt.savefig(os.path.join("music_dataset_spectro_full/valid/"+label, f"{i}_spect.png"))
+            plt.imsave(os.path.join("music_seperation_dataset/valid/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         plt.close()
         i=i+1
@@ -128,3 +125,4 @@ print("done")
 """""
 
 makeSpectrogram("full_mix")
+makeSpectrogram("Drum_set")
