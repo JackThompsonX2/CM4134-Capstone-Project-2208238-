@@ -16,15 +16,15 @@ def makeSpectrogram(label):
     wav_files = glob.glob(os.path.join('music_dataset/'+label+'/*.wav'), recursive=True)
     i=0
     try:
-        os.makedirs("music_seperation_dataset/train/"+label)
+        os.makedirs("music_dataset_spectro_full/train/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_seperation_dataset/test/"+label)
+        os.makedirs("music_dataset_spectro_full/test/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_seperation_dataset/valid/"+label)
+        os.makedirs("music_dataset_spectro_full/valid/"+label)
     except:
         print("folder is already made")        
 
@@ -40,15 +40,15 @@ def makeSpectrogram(label):
 
         if i < int(len(wav_files)*0.80):
 
-            plt.imsave(os.path.join("music_seperation_dataset/train/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full/train/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90):
             
-            plt.imsave(os.path.join("music_seperation_dataset/test/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full/test/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         else:
             
-            plt.imsave(os.path.join("music_seperation_dataset/valid/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full/valid/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         plt.close()
         i=i+1
@@ -124,5 +124,5 @@ makeSpectrogram("Violin")
 print("done")
 """""
 
-makeSpectrogram("full_mix")
+#makeSpectrogram("full_mix")
 makeSpectrogram("Drum_set")
