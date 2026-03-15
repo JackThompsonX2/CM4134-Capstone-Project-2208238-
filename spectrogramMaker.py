@@ -100,12 +100,12 @@ makeSpectrogram("Organ")
 print("done")
 makeSpectrogram("Piano")
 print("done")
-"""""
+""""""
 
 #makeSpectrogram("Harmonium")
 #print("done")
 
-"""""
+
 makeSpectrogram("Saxophone")
 print("done")
 makeSpectrogram("Shakers")
@@ -122,7 +122,7 @@ makeSpectrogram("vibraphone")
 print("done")
 makeSpectrogram("Violin")
 print("done")
-"""""
+
 
 #makeSpectrogram("full_mix")
 #makeSpectrogram("Drum_set")
