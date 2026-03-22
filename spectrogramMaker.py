@@ -123,8 +123,8 @@ print("done")
 makeSpectrogram("Violin")
 print("done")
 
-
-#makeSpectrogram("full_mix")
-#makeSpectrogram("Drum_set")
 """""
-makeSpectrogram("songsfull")
+makeSpectrogram("full_mix")
+#makeSpectrogram("Drum_set")
+
+#makeSpectrogram("songsfull")
