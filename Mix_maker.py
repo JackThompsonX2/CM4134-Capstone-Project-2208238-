@@ -38,4 +38,4 @@ def makeMixes(num_mixes):
         i=i+1
         gc.collect()
 
-makeMixes(2)
+makeMixes(2000)
