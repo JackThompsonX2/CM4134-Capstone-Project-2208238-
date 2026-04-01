@@ -15,7 +15,7 @@ for label in labels:
 
 
 def makeMixes(num_mixes):
-    i = 1046
+    i = 3046
     for num in range(num_mixes):
         num_Stems_To_Mix = random.randint(2,6)
         instrument_select= random.sample(instruments_path,num_Stems_To_Mix)    
