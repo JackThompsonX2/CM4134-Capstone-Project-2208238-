@@ -22,7 +22,7 @@ predimg= np.squeeze(model.predict([img,drum]))
 prediction= predimg*255
 print(prediction.shape)
 
-cv2.imwrite("separated_drum_part.png",prediction)
+cv2.imwrite("separated_drum_partcheck.png",prediction)
 
 img = cv2.imread("music_separation_2/train/full_mix/462_full_mix.png",0)
 
@@ -36,4 +36,4 @@ predimg= np.squeeze(model.predict([img,acoustic]))
 prediction= predimg*255
 print(prediction.shape)
 
-cv2.imwrite("separated_part_acoustic.png",prediction)
+cv2.imwrite("separated_part_acousticcheck.png",prediction)
