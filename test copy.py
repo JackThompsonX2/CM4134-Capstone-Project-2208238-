@@ -10,7 +10,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 model= keras.models.load_model("CheckPoint.keras")
-img = cv2.imread("Music_separation_dataset/test/mix/4052_mix.png",0)
+img = cv2.imread("Music_separation_dataset/train/mix/0_mix.png",0)
 
 img=cv2.resize(img,(128,128))
 img= np.reshape(img,(-1, 128, 128, 1))
