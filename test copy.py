@@ -4,12 +4,20 @@ import matplotlib.pyplot as plt
 import librosa
 import cv2
 from PIL import Image
-import tensorflow
+import tensorflow as tf
 from tensorflow import keras
 import warnings
+from tensorflow.keras.saving import register_keras_serializable
 warnings.filterwarnings('ignore')
 
-model= keras.models.load_model("CheckPoint.keras")
+
+@register_keras_serializable()
+def loss_function(y_true,y_pred):
+    loss = 1-tf.reduce_mean(tf.image.ssim(y_true,y_pred,max_val=1))
+    return loss
+
+
+model= keras.models.load_model("CheckPoint.keras",custom_objects={'loss_function': loss_function})
 img = cv2.imread("Music_separation_dataset/train/mix/0_mix.png",0)
 
 img=cv2.resize(img,(128,128))
