@@ -9,17 +9,15 @@ import gc
 
 
 def makeSpectrogram():
-    wav_files = glob.glob(os.path.join('audio_separator_dataset/stems/*.wav'), recursive=True)     
+    wav_files = glob.glob(os.path.join('audio_separator_dataset/stems/*.wav'), recursive=True)# load wavs 
 
     for spectro in wav_files:
 
-        freq, sr = librosa.load(spectro)
+        freq, sr = librosa.load(spectro) # load wav into libarosa
 
-        mel_spec = librosa.feature.melspectrogram(y=freq, sr=sr, n_fft=2048, hop_length=512, n_mels=128)
+        mel_spec = librosa.feature.melspectrogram(y=freq, sr=sr, n_fft=2048, hop_length=512, n_mels=128) # create mel sepctrogram for stem
 
-        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max)
-
-        plt.figure(figsize=(10, 4))
+        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max)# covert from power to db so it shows 
 
         spectro=spectro.split("\\")[1]
         spectro=spectro.split(".")[0]
