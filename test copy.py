@@ -7,18 +7,14 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow import keras
 import warnings
-from tensorflow.keras.saving import register_keras_serializable
+
+
 warnings.filterwarnings('ignore')
 
 
-@register_keras_serializable()
-def loss_function(y_true,y_pred):
-    loss = 1-tf.reduce_mean(tf.image.ssim(y_true,y_pred,max_val=1))
-    return loss
 
-
-model= keras.models.load_model("CheckPoint.keras",custom_objects={'loss_function': loss_function})
-img = cv2.imread("Music_separation_dataset/train/mix/0_mix.png",0)
+model= keras.models.load_model("CheckPoint.keras")
+img = cv2.imread("music_separation_2/test/full_mix/837_full_mix.png",0)
 
 img=cv2.resize(img,(128,128))
 img= np.reshape(img,(-1, 128, 128, 1))
@@ -32,7 +28,7 @@ print(prediction.shape)
 
 cv2.imwrite("separated_drum_partcheck.png",prediction)
 
-img = cv2.imread("music_separation_2/train/full_mix/462_full_mix.png",0)
+img = cv2.imread("music_separation_2/test/full_mix/843_full_mix.png",0)
 
 img=cv2.resize(img,(128,128))
 img= np.reshape(img,(-1, 128, 128, 1))
