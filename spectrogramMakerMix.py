@@ -8,20 +8,18 @@ import gc
 
 
 def makeSpectrogram():
-    wav_files = glob.glob(os.path.join('audio_separator_dataset/mix/*.wav'), recursive=True)
+    wav_files = glob.glob(os.path.join('audio_separator_dataset/mix/*.wav'), recursive=True)#load wav files
     i=0      
 
     for spectro in wav_files:
 
-        freq, sr = librosa.load(spectro)
+        freq, sr = librosa.load(spectro) # load into librosa
 
-        mel_spec = librosa.feature.melspectrogram(y=freq, sr=sr, n_fft=2048, hop_length=512, n_mels=128)
+        mel_spec = librosa.feature.melspectrogram(y=freq, sr=sr, n_fft=2048, hop_length=512, n_mels=128) # covert to mel sepctrogram using STFT
 
-        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max)
+        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max) # convert from power to db so it's show the signals
 
-        plt.figure(figsize=(10, 4))
-
-        plt.imsave(os.path.join("Music_separation_dataset/mix/", f"{i}_mix.png"),log_mel_spec,cmap="gray")
+        plt.imsave(os.path.join("Music_separation_dataset/mix/", f"{i}_mix.png"),log_mel_spec,cmap="gray") # save the spectrograms as greyscale images
         
         plt.close()
         i=i+1
