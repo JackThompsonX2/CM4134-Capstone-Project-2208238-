@@ -19,7 +19,7 @@ def makeSpectrogram():
 
         log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max) # convert from power to db so it's show the signals
 
-        plt.imsave(os.path.join("Music_separation_dataset/mix/", f"{i}_mix.png"),log_mel_spec,cmap="gray") # save the spectrograms as greyscale images
+        plt.imsave(os.path.join("Music_mixes_dataset_classification/mix/", f"{i}_mix.png"),log_mel_spec,cmap="gray") # save the spectrograms as greyscale images
         
         plt.close()
         i=i+1
