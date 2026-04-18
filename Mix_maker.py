@@ -15,7 +15,7 @@ for label in labels:
 
 
 def makeMixes(num_mixes):
-    i = 37046 # i start from the real mixes i made in audactiy
+    i = 40046 # i start from the real mixes i made in audactiy
     for num in range(num_mixes): #for loop 
         num_Stems_To_Mix = random.randint(2,3) #mix 2-3 instruments as this shouldn't create many artifacts or issues
 
@@ -41,4 +41,4 @@ def makeMixes(num_mixes):
         i=i+1
         gc.collect()
 
-makeMixes(3000)
+makeMixes(1000)
