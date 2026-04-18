@@ -17,7 +17,7 @@ for label in labels:
 def makeMixes(num_mixes):
     i = 1046 # i start from the real mixes i made in audactiy
     for num in range(num_mixes): #for loop 
-        num_Stems_To_Mix = random.randint(2,3) #mix 2-3 instruments as this should create many artifacts or issues
+        num_Stems_To_Mix = random.randint(2,3) #mix 2-3 instruments as this shouldn't create many artifacts or issues
 
         instrument_select= random.sample(instruments_path,num_Stems_To_Mix) # random sample should make it so it doesn't select the same instrument to mix together  
 

@@ -2,7 +2,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import librosa
-import librosa.display
 import glob
 import gc
 
@@ -12,19 +11,19 @@ dataset = os.listdir("music_dataset")
 labels = dataset
 print(labels)
 
-def makeSpectrogram(label):
+def makeSpectrogram(label):#takes the instrument label
     wav_files = glob.glob(os.path.join('music_dataset/'+label+'/*.wav'), recursive=True)
     i=0
     try:
-        os.makedirs("music_separation_2/train/"+label)
+        os.makedirs("music_dataset_spectro_full_single/train/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_separation_2/test/"+label)
+        os.makedirs("music_dataset_spectro_full_single/test/"+label)
     except:
         print("folder is already made")
     try:
-        os.makedirs("music_separation_2/valid/"+label)
+        os.makedirs("music_dataset_spectro_full_single/valid/"+label)
     except:
         print("folder is already made")        
 
@@ -34,21 +33,19 @@ def makeSpectrogram(label):
 
         mel_spec = librosa.feature.melspectrogram(y=freq, sr=sr, n_fft=2048, hop_length=512, n_mels=128)
 
-        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max)
+        log_mel_spec = librosa.power_to_db(mel_spec, ref=np.max) # convert from power to db so it's show the signals
 
-        plt.figure(figsize=(10, 4))
+        if i < int(len(wav_files)*0.80): # have it split the data into training 80%
 
-        if i < int(len(wav_files)*0.80):
-
-            plt.imsave(os.path.join("music_separation_2/train/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full_single/train/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
-        elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90):
+        elif i >= int(len(wav_files)*0.80) and i < int(len(wav_files)*0.90): # have it split the data into test 10%
             
-            plt.imsave(os.path.join("music_separation_2/test/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full_single/test/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
-        else:
+        else: # have it split the data into valid 10%
             
-            plt.imsave(os.path.join("music_separation_2/valid/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
+            plt.imsave(os.path.join("music_dataset_spectro_full_single/valid/"+label, f"{i}_"+label+".png"),log_mel_spec,cmap="gray")
         
         plt.close()
         i=i+1
@@ -124,7 +121,6 @@ makeSpectrogram("Violin")
 print("done")
 
 """""
-makeSpectrogram("full_mix")
-#makeSpectrogram("Drum_set")
 
-#makeSpectrogram("songsfull")
+
+
