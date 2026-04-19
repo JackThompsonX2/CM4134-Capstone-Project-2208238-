@@ -11,7 +11,7 @@ import gc
 def makeSpectrogram():
     wav_files = glob.glob(os.path.join('audio_separator_dataset/stems/*.wav'), recursive=True)# load wavs 
 
-    for spectro in wav_files:
+    for spectro in wav_files:#loops through stems
 
         freq, sr = librosa.load(spectro) # load wav into libarosa
 
@@ -22,7 +22,7 @@ def makeSpectrogram():
         spectro=spectro.split("\\")[1]
         spectro=spectro.split(".")[0]
 
-        plt.imsave(os.path.join("Music_separation_dataset/stems/", spectro+".png"),log_mel_spec,cmap="gray")
+        plt.imsave(os.path.join("Music_mixes_dataset_classification/stems/", spectro+".png"),log_mel_spec,cmap="gray")
         
         plt.close()
         gc.collect()
