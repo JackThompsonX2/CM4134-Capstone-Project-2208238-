@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import librosa
 import cv2
-from PIL import Image
 
 
 freq, sr = librosa.load("14 I Feel Fine.mp3")
