@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 
 
 model= keras.models.load_model("CheckPoint.keras")
-img = cv2.imread("Music_separation_dataset/test/mix/4044_mix.png",0)
+img = cv2.imread("music_separation_dataset_small/test/full_mix/837_mix.png",0)
 
 img=img[:128,:128]
 img= np.reshape(img,(-1, 128, 128, 1))
@@ -25,7 +25,7 @@ print(prediction.shape)
 
 cv2.imwrite("separated_drum_partcheck.png",prediction)
 
-img = cv2.imread("Music_separation_dataset/test/mix/4052_mix.png",0)
+img = cv2.imread("music_separation_dataset_small/test/full_mix/843_mix.png",0)
 
 img=img[:128,:128]
 img= np.reshape(img,(-1, 128, 128, 1))
